@@ -93,12 +93,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 { nombre: "Inglés aplicado a las ciencias de la salud I", creditos: 3, tipo: "obligatorio", cursado: false }
             ]
         },
-        
-        // Ciclo 10 (Prácticas)
+        // Ciclo 9 (con obligatorios + electivos)
+        {
+            ciclo: "Ciclo 9",
+            cursos: [
+                // Obligatorios
+                { 
+                    nombre: "Taller de tesis II", 
+                    creditos: 4, 
+                    tipo: "obligatorio", 
+                    cursado: false,
+                    prerequisito: "Taller de tesis I"
+                },
+                { 
+                    nombre: "Diagnóstico e informes en psicología organizacional", 
+                    creditos: 4, 
+                    tipo: "obligatorio", 
+                    cursado: false 
+                },
+                // ... (otros obligatorios del ciclo 9)
+                
+                // Electivos (se muestran en morado pastel)
+                { 
+                    nombre: "Orientación y consejo psicológico", 
+                    creditos: 3, 
+                    tipo: "electivo", 
+                    cursado: false 
+                },
+                { 
+                    nombre: "Psicología clínica y de la salud", 
+                    creditos: 3, 
+                    tipo: "electivo", 
+                    cursado: false 
+                },
+                // ... (otros electivos)
+            ]
+        },
+        // Ciclo 10 (solo obligatorios)
         {
             ciclo: "Ciclo 10",
             cursos: [
-                { nombre: "Prácticas Pre-Profesionales", creditos: 24, tipo: "obligatorio", cursado: false }
+                { 
+                    nombre: "Prácticas Pre-Profesionales", 
+                    creditos: 24, 
+                    tipo: "obligatorio", 
+                    cursado: false 
+                }
             ]
         }
     ];
@@ -115,15 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ciclo.cursos.forEach((curso) => {
             const cursoCell = document.createElement('div');
             cursoCell.classList.add('curso-cell', curso.tipo);
+            
+            // Aplica estilo "cursado" si corresponde
             if (curso.cursado) cursoCell.classList.add('cursado');
             
+            // Contenido del curso (nombre, créditos y prerrequisitos)
             cursoCell.innerHTML = `
                 <strong>${curso.nombre}</strong>
                 <small>${curso.creditos} créditos</small>
-                ${curso.prerequisito ? `<br><em>Pre: ${curso.prerequisito}</em>` : ''}
+                ${curso.prerequisito ? `<br><em class="prerequisito">Pre: ${curso.prerequisito}</em>` : ''}
             `;
             
-            // Interacción: Marcar como cursado al hacer clic
+            // Interacción: Marcar/desmarcar como cursado al hacer clic
             cursoCell.addEventListener('click', () => {
                 curso.cursado = !curso.cursado;
                 cursoCell.classList.toggle('cursado');
