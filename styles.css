@@ -1,1 +1,124 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.leyenda {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* Estilos de celdas */
+.ciclo-title {
+    grid-column: 1 / -1;
+    background: #3498db;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.curso-cell {
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Colores según estado */
+.obligatorio {
+    background: #FFD1DC; /* Rosado pastel para obligatorios no cursados */
+}
+
+.electivo {
+    background: #E6E6FA; /* Morado pastel para electivos */
+}
+
+.cursado {
+    background: #B0E0E6; /* Celeste pastel para cursados */
+    position: relative;
+}
+
+.cursado::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    width: 80%;
+    height: 2px;
+    background: #555;
+    transform: rotate(-5deg);
+}
+
+/* Efectos hover */
+.curso-cell:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Colores de la leyenda */
+.color-obligatorio {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #FFD1DC;
+    border-radius: 3px;
+}
+
+.color-cursado {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #B0E0E6;
+    border-radius: 3px;
+}
+
+.color-electivo {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #E6E6FA;
+    border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
