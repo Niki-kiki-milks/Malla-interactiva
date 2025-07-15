@@ -469,7 +469,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
             ]
         },
-        // Ciclo 10 (solo obligatorios)
+            
+// Ciclo 10 (solo obligatorios)
         {
             ciclo: "Ciclo 10",
             cursos: [
